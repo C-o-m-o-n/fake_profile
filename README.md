@@ -1,19 +1,20 @@
-# Fake Profile Generaator
-
-
+# Fake Profile
 
 A Python package to generate fake social media user data and interactions for testing and development.
+
+<em> currently supports twitter(X), more comming soon </em>
 
 ## Installation
 
 Install the package using pip:
 
 ```bash
-pip install fake_profile
+pip install fake-profile
 
+```
 
 ## Usage
-
+```python
 from fake_profile import Xprofile
 
 generator = Xprofile()
@@ -27,3 +28,4 @@ print(comments)
 print(likes)
 print(retweets)
 
+```
