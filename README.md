@@ -2,7 +2,7 @@
 
 A Python package to generate fake social media user data and interactions for testing and development.
 
-<em> currently supports twitter(X), more comming soon </em>
+<em> currently supports twitter(X), Instagram, LinkedIn, more comming soon </em>
 
 ## Installation
 
@@ -13,13 +13,39 @@ pip install fake-profile
 
 ```
 
-## Usage
-```python
+
+# Example usage
+### For LinkedIn
+```
+from fake_profile import LinkedInProfile
+
+linkedInProfile = LinkedInProfile()
+print(linkedInProfile.generate_fake_linkedin_data())
+```
+### For X/Twitter
+```
 from fake_profile import Xprofile
 
+xProfile = Xprofile()
+print(xProfile.generate_fake_twitter_data())
+```
+### For Instagram
+```
+from fake_profile import InstaProfile
+
+instaProfile = InstaProfile()
+print(instaProfile.generate_fake_instagram_data())
+```
+
+### For more specific usage
+```
+from fake_profile import Xprofile, InstaProfile, LinkedInProfile
+```
+## Create an instance of Xprofile
+```
 generator = Xprofile()
 
-# Generate data
+# Generate Twitter data
 users, tweets, comments, likes, retweets = generator.generate_fake_twitter_data(user_count=5, tweets_per_user=3)
 
 print(users)
@@ -27,5 +53,30 @@ print(tweets)
 print(comments)
 print(likes)
 print(retweets)
+```
+## Create an instance of InstaProfile
+```
+generator = InstaProfile()
 
+# Generate Instagram data
+users, posts, comments, likes, reposts = generator.generate_fake_instagram_data(user_count=5, posts_per_user=3)
+
+print(users)
+print(posts)
+print(comments)
+print(likes)
+print(reposts)
+```
+## Create an instance of LinkedInProfile
+```
+generator = LinkedInProfile()
+
+# Generate LinkedIn data
+users, posts, comments, likes, shares = generator.generate_fake_linkedin_data(user_count=5, posts_per_user=3)
+
+print(users)
+print(posts)
+print(comments)
+print(likes)
+print(shares)
 ```

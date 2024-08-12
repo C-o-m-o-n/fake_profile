@@ -93,7 +93,7 @@ class Xprofile:
 
         return tweets, comments, likes, retweets
 
-    def generate_fake_twitter_data(self, user_count=10, tweets_per_user=5):
+    def generate_fake_twitter_data(self, user_count=4, tweets_per_user=2):
         users = []
         all_tweets = []
         all_comments = []
@@ -185,7 +185,7 @@ class InstaProfile:
 
         return posts, comments, likes, reposts
 
-    def generate_fake_instagram_data(self, user_count=10, posts_per_user=5):
+    def generate_fake_instagram_data(self, user_count=4, posts_per_user=2):
         users = []
         all_posts = []
         all_comments = []
@@ -283,7 +283,7 @@ class LinkedInProfile:
 
         return posts, comments, likes, shares
 
-    def generate_fake_linkedin_data(self, user_count=10, posts_per_user=5):
+    def generate_fake_linkedin_data(self, user_count=4, posts_per_user=2):
         users = []
         all_posts = []
         all_comments = []
@@ -303,42 +303,4 @@ class LinkedInProfile:
             all_shares.extend(user_shares)
 
         return users, all_posts, all_comments, all_likes, all_shares
-
-
-# Example usage
-if __name__ == "__main__":
-    # Twitter
-    xprofile = Xprofile()
-    twitter_users, tweets, comments, likes, retweets = xprofile.generate_fake_twitter_data()
-    with open("twitter_data.json", "w") as f:
-        json.dump({
-            "users": twitter_users,
-            "tweets": tweets,
-            "comments": comments,
-            "likes": likes,
-            "retweets": retweets,
-        }, f, indent=4)
-
-    # Instagram
-    insta = InstaProfile()
-    insta_users, posts, insta_comments, insta_likes, insta_reposts = insta.generate_fake_instagram_data()
-    with open("insta_data.json", "w") as f:
-        json.dump({
-            "users": insta_users,
-            "posts": posts,
-            "comments": insta_comments,
-            "likes": insta_likes,
-            "reposts": insta_reposts,
-        }, f, indent=4)
-
-    # LinkedIn
-    linkedin = LinkedInProfile()
-    linkedin_users, linkedin_posts, linkedin_comments, linkedin_likes, linkedin_shares = linkedin.generate_fake_linkedin_data()
-    with open("linkedin_data.json", "w") as f:
-        json.dump({
-            "users": linkedin_users,
-            "posts": linkedin_posts,
-            "comments": linkedin_comments,
-            "likes": linkedin_likes,
-            "shares": linkedin_shares,
-        }, f, indent=4)
+    
