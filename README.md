@@ -2,7 +2,7 @@
 
 A Python package to generate fake social media user data and interactions for testing and development.
 
-<em> currently supports twitter(X), more comming soon </em>
+<em> currently supports twitter(X), Instagram, LinkedIn, more comming soon </em>
 
 ## Installation
 
