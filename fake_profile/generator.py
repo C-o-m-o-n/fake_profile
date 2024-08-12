@@ -93,7 +93,7 @@ class Xprofile:
 
         return tweets, comments, likes, retweets
 
-    def generate_fake_twitter_data(self, user_count=10, tweets_per_user=5):
+    def generate_fake_twitter_data(self, user_count=4, tweets_per_user=2):
         users = []
         all_tweets = []
         all_comments = []
@@ -185,7 +185,7 @@ class InstaProfile:
 
         return posts, comments, likes, reposts
 
-    def generate_fake_instagram_data(self, user_count=10, posts_per_user=5):
+    def generate_fake_instagram_data(self, user_count=4, posts_per_user=2):
         users = []
         all_posts = []
         all_comments = []
@@ -283,7 +283,7 @@ class LinkedInProfile:
 
         return posts, comments, likes, shares
 
-    def generate_fake_linkedin_data(self, user_count=10, posts_per_user=5):
+    def generate_fake_linkedin_data(self, user_count=4, posts_per_user=2):
         users = []
         all_posts = []
         all_comments = []
@@ -303,3 +303,4 @@ class LinkedInProfile:
             all_shares.extend(user_shares)
 
         return users, all_posts, all_comments, all_likes, all_shares
+    
