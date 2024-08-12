@@ -41,7 +41,7 @@ print(instaProfile.generate_fake_instagram_data())
 ```
 from fake_profile import Xprofile, InstaProfile, LinkedInProfile
 ```
-# Create an instance of Xprofile
+## Create an instance of Xprofile
 ```
 generator = Xprofile()
 
@@ -54,7 +54,7 @@ print(comments)
 print(likes)
 print(retweets)
 ```
-# Create an instance of InstaProfile
+## Create an instance of InstaProfile
 ```
 generator = InstaProfile()
 
@@ -67,7 +67,7 @@ print(comments)
 print(likes)
 print(reposts)
 ```
-# Create an instance of LinkedInProfile
+## Create an instance of LinkedInProfile
 ```
 generator = LinkedInProfile()
 
