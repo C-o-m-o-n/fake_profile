@@ -14,7 +14,7 @@ pip install fake-profile
 ```
 
 
-# Example usage For 
+# Example usage
 ```
     # Twitter
     xprofile = Xprofile()
