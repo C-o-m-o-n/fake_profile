@@ -1,5 +1,6 @@
 from faker import Faker
 import random, json
+from constants import RANDOM_IMAGE_URL
 
 class Xprofile:
     def __init__(self):
@@ -13,8 +14,8 @@ class Xprofile:
             "bio": self.fake.text(max_nb_chars=160),
             "location": self.fake.city(),
             "url": self.fake.url(),
-            "profile_image_url": "https://randomfox.ca/",
-            "banner_image_url": "https://randomfox.ca/",
+            "profile_image_url": RANDOM_IMAGE_URL,
+            "banner_image_url": RANDOM_IMAGE_URL,
             "join_date": str(self.fake.date_time_this_decade()),
             "verified_status": self.fake.boolean(chance_of_getting_true=10),
             "follower_count": random.randint(0, 1000000),
@@ -45,7 +46,7 @@ class Xprofile:
             "is_reply": self.fake.boolean(chance_of_getting_true=15),
             "is_quoted": self.fake.boolean(chance_of_getting_true=10),
             "language": self.fake.language_code(),
-            "tweet_image_url": "https://randomfox.ca/",
+            "tweet_image_url": RANDOM_IMAGE_URL,
         }
 
     def generate_fake_comment(self, tweet_id, user_id):
@@ -125,7 +126,7 @@ class InstaProfile:
             "username": self.fake.user_name(),
             "full_name": self.fake.name(),
             "bio": self.fake.text(max_nb_chars=160),
-            "profile_image_url": "https://randomfox.ca/",
+            "profile_image_url": RANDOM_IMAGE_URL,
             "website": self.fake.url(),
             "followers": random.randint(0, 1000000),
             "following": random.randint(0, 1000),
@@ -160,7 +161,7 @@ class InstaProfile:
     def generate_post(self, user_id):
         return {
             "post_id": self.fake.uuid4(),
-            "image_url": "https://randomfox.ca/",
+            "image_url": RANDOM_IMAGE_URL,
             "caption": self.fake.text(),
             "likes": random.randint(0, 50000),
         }
@@ -219,7 +220,7 @@ class LinkedInProfile:
             "headline": self.fake.job(),
             "location": f"{self.fake.city()}, {self.fake.country()}",
             "summary": self.fake.text(max_nb_chars=300),
-            "profile_image_url": "https://randomfox.ca/",
+            "profile_image_url": RANDOM_IMAGE_URL,
             "industry": self.fake.bs(),
             "education": self.fake.catch_phrase(),
             "experience": self.fake.text(max_nb_chars=300),
