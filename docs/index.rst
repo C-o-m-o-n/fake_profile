@@ -38,29 +38,32 @@ Classes and Methods
 
 .. code-block:: python
 
-  generate_fake_user() -> {
-  user_id,
-  username,
-  name,
-  bio,
-  location,
-  url,
-  profile_image_url,
-  banner_image_url,
-  join_date,
-  verified_status,
-  follower_count,
-  following_count,
-  tweet_count,
-  likes_count,
-  list_memberships,
-  timezone,
-  language,
-  protected_status,
-  suspended_status,
-  default_profile,
-  default_profile_image
-          }
+  generate_fake_user()
+
+  #returns a fake user object 
+  {
+  "user_id": "263705fa-3689-4f7a-a2bc-2e38754d5a75",
+  "username": "yhayes",
+  "name": "Ronald Lewis",
+  "bio": "Pay month center simple sort ten make. Number bar arrive simply along look economic. Policy tonight training.",
+  ......
+  }
+
+
+  - *generate_fake_tweet*
+
+.. code-block:: python
+
+  generate_fake_tweet(user_id: str)
+
+  #returns a fake tweet object
+  {
+  'tweet_id': 'cab09fc9-ad86-472e-ab84-c11decc1b3d4',
+  'user_id': '263705fa-3689-4f7a-a2bc-2e38754d5a75',
+  'text': 'Plan name for without receive machine even serious management view town line term past safe deep book difference here next cover sell reflect.',
+  .......
+  }
+
 
 Usage
 -----

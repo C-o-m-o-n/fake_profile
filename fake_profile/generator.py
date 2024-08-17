@@ -1,6 +1,15 @@
 from faker import Faker
 import random, json
-from constants import RANDOM_IMAGE_URL
+
+with open('fake_profile/constants', 'r') as f:
+    lines = f.readlines()
+
+    for row in lines:
+        var = 'RANDOM_IMAGE_URL'
+        if row.find(var) != -1:
+            text_line_index = lines.index(row)
+            text_line_split = lines[text_line_index].split("=")
+            RANDOM_IMAGE_URL = text_line_split[1]
 
 class Xprofile:
     def __init__(self):

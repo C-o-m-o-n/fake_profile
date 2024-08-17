@@ -1,1 +1,0 @@
-RANDOM_IMAGE_URL = 'https://randomfox.ca/'
