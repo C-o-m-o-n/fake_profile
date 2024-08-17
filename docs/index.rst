@@ -39,9 +39,11 @@ Let's start with the first method under this class
   - *generate_fake_user*
 
     .. code-block:: python
+
         generate_fake_user()
 
         #returns a fake user object 
+        
         {
             "user_id": "263705fa-3689-4f7a-a2bc-2e38754d5a75",
             "username": "yhayes",
@@ -57,7 +59,9 @@ Let's look at the second method under this class
     .. code-block:: python
         
         generate_fake_tweet(user_id: str)
+        
         #returns a fake tweet object
+        
         {
             'tweet_id': 'cab09fc9-ad86-472e-ab84-c11decc1b3d4',
             'user_id': '263705fa-3689-4f7a-a2bc-2e38754d5a75',
