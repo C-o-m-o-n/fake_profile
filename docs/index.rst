@@ -34,6 +34,8 @@ Classes and Methods
 
 - **Class Xprofile**
 
+Let's start with the first method under this class
+
   - *generate_fake_user*
 
     .. code-block:: python
@@ -47,7 +49,9 @@ Classes and Methods
             "bio": "Pay month center simple sort ten make. Number bar arrive simply along look economic. Policy tonight training.",
             ......
         }
-.
+
+Let's look at the second method under this class
+
   - *generate_fake_tweet*
 
     .. code-block:: python
