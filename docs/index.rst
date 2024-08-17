@@ -34,7 +34,7 @@ Classes and Methods
 
 - **Class Xprofile**
 
-- *method generate_fake_user*
+  - *generate_fake_user*
 
 .. code-block:: python
 
@@ -81,14 +81,14 @@ Here's a quick example of how to use fake_profile to generate a Twitter user pro
   print(likes)
   print(retweets)
 
-Refer to the :ref:`Usage` section for more detailed examples and use cases.
+Refer to the Usage section for more detailed examples and use cases.
 
 Further Reading
 ---------------
 
-- For more detailed examples, see the :ref:`Usage` section.
-- Learn about the underlying concepts in the :ref:`Concepts` section.
-- See the :ref:`Installation` section for help with installation.
+- For more detailed examples, see the Usage section.
+- Learn about the underlying concepts in the Concepts section.
+- See the Installation section for help with installation.
 
 Indices and tables
 ==================
