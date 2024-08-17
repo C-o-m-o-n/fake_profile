@@ -47,7 +47,7 @@ Classes and Methods
             "bio": "Pay month center simple sort ten make. Number bar arrive simply along look economic. Policy tonight training.",
             ......
         }
-
+.
   - *generate_fake_tweet*
 
     .. code-block:: python
