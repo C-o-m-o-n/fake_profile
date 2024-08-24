@@ -69,6 +69,40 @@ Let's look at the second method under this class
             .......
         }
 
+Let's look at the another method under this class
+
+  - *generate_fake_like*
+
+    .. code-block:: python
+        
+        generate_fake_like(tweet_id: str, user_id: str)
+        
+        #returns a fake like object
+        
+        {
+            'like_id': '263705fa-3689-4f7a-a2bc-2-ad86-sy72hu',
+            'tweet_id': 'cab09fc9-ad86-472e-ab84-c11decc1b3d4',
+            'user_id': '263705fa-3689-4f7a-a2bc-2e38754d5a75',
+            .......
+        }
+
+Let's look at the another method under this class
+
+  - *generate_fake_comment*
+
+    .. code-block:: python
+        
+        generate_fake_comment(tweet_id: str, user_id: str)
+        
+        #returns a fake comment object
+        
+        {
+            'comment_id': 'cab09fc9-ad86-472e-ab84-c11decc1b3d4',
+            'tweet_id': 'cab09fc9-ad86-472e-ab84-c11decc1b3d4',
+            'user_id': '263705fa-3689-4f7a-a2bc-2e38754d5a75',
+            'text': 'Random comment text',
+            .......
+        }
 
 Usage
 -----
