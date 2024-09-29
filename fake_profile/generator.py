@@ -6,10 +6,17 @@ with open('fake_profile/constants', 'r') as f:
 
     for row in lines:
         var = 'RANDOM_IMAGE_URL'
+        profile = 'RANDOM_PROFILE_URL'
         if row.find(var) != -1:
             text_line_index = lines.index(row)
             text_line_split = lines[text_line_index].split("=")
             RANDOM_IMAGE_URL = text_line_split[1]
+        
+        if row.find(profile) != -1:
+            text_line_index = lines.index(row)
+            text_line_split = lines[text_line_index].split("=")
+            RANDOM_PROFILE_URL = text_line_split[1]
+            
 
 class Xprofile:
     def __init__(self):
@@ -23,7 +30,7 @@ class Xprofile:
             "bio": self.fake.text(max_nb_chars=160),
             "location": self.fake.city(),
             "url": self.fake.url(),
-            "profile_image_url": RANDOM_IMAGE_URL,
+            "profile_image_url": RANDOM_PROFILE_URL,
             "banner_image_url": RANDOM_IMAGE_URL,
             "join_date": str(self.fake.date_time_this_decade()),
             "verified_status": self.fake.boolean(chance_of_getting_true=10),
@@ -135,7 +142,7 @@ class InstaProfile:
             "username": self.fake.user_name(),
             "full_name": self.fake.name(),
             "bio": self.fake.text(max_nb_chars=160),
-            "profile_image_url": RANDOM_IMAGE_URL,
+            "profile_image_url": RANDOM_PROFILE_URL,
             "website": self.fake.url(),
             "followers": random.randint(0, 1000000),
             "following": random.randint(0, 1000),
@@ -229,7 +236,7 @@ class LinkedInProfile:
             "headline": self.fake.job(),
             "location": f"{self.fake.city()}, {self.fake.country()}",
             "summary": self.fake.text(max_nb_chars=300),
-            "profile_image_url": RANDOM_IMAGE_URL,
+            "profile_image_url": RANDOM_PROFILE_URL,
             "industry": self.fake.bs(),
             "education": self.fake.catch_phrase(),
             "experience": self.fake.text(max_nb_chars=300),
@@ -325,7 +332,7 @@ class FacebookProfile:
             "username": self.fake.user_name(),
             "full_name": self.fake.name(),
             "bio": self.fake.text(max_nb_chars=160),
-            "profile_image_url": RANDOM_IMAGE_URL,
+            "profile_image_url": RANDOM_PROFILE_URL,
             "cover_photo_url": RANDOM_IMAGE_URL,
             "location": self.fake.city(),
             "friends_count": random.randint(0, 5000),
