@@ -80,3 +80,18 @@ print(comments)
 print(likes)
 print(shares)
 ```
+## Create an Instance of FacebookProfile
+```python
+generator = FacebookProfile()
+
+# Generate Facebook data
+users, posts, comments, likes, shares = generator.generate_fake_facebook_data(user_count=5, posts_per_user=3)
+
+print(users)
+print(posts)
+print(comments)
+print(likes)
+print(shares)
+```
+
+

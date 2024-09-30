@@ -6,10 +6,17 @@ with open('fake_profile/constants', 'r') as f:
 
     for row in lines:
         var = 'RANDOM_IMAGE_URL'
+        profile = 'RANDOM_PROFILE_URL'
         if row.find(var) != -1:
             text_line_index = lines.index(row)
             text_line_split = lines[text_line_index].split("=")
             RANDOM_IMAGE_URL = text_line_split[1]
+        
+        if row.find(profile) != -1:
+            text_line_index = lines.index(row)
+            text_line_split = lines[text_line_index].split("=")
+            RANDOM_PROFILE_URL = text_line_split[1]
+            
 
 class Xprofile:
     def __init__(self):
@@ -23,7 +30,7 @@ class Xprofile:
             "bio": self.fake.text(max_nb_chars=160),
             "location": self.fake.city(),
             "url": self.fake.url(),
-            "profile_image_url": RANDOM_IMAGE_URL,
+            "profile_image_url": RANDOM_PROFILE_URL,
             "banner_image_url": RANDOM_IMAGE_URL,
             "join_date": str(self.fake.date_time_this_decade()),
             "verified_status": self.fake.boolean(chance_of_getting_true=10),
@@ -135,7 +142,7 @@ class InstaProfile:
             "username": self.fake.user_name(),
             "full_name": self.fake.name(),
             "bio": self.fake.text(max_nb_chars=160),
-            "profile_image_url": RANDOM_IMAGE_URL,
+            "profile_image_url": RANDOM_PROFILE_URL,
             "website": self.fake.url(),
             "followers": random.randint(0, 1000000),
             "following": random.randint(0, 1000),
@@ -229,7 +236,7 @@ class LinkedInProfile:
             "headline": self.fake.job(),
             "location": f"{self.fake.city()}, {self.fake.country()}",
             "summary": self.fake.text(max_nb_chars=300),
-            "profile_image_url": RANDOM_IMAGE_URL,
+            "profile_image_url": RANDOM_PROFILE_URL,
             "industry": self.fake.bs(),
             "education": self.fake.catch_phrase(),
             "experience": self.fake.text(max_nb_chars=300),
@@ -314,3 +321,100 @@ class LinkedInProfile:
 
         return users, all_posts, all_comments, all_likes, all_shares
     
+
+class FacebookProfile:
+    def __init__(self):
+        self.fake = Faker()
+
+    def generate_user(self):
+        return {
+            "user_id": self.fake.uuid4(),
+            "username": self.fake.user_name(),
+            "full_name": self.fake.name(),
+            "bio": self.fake.text(max_nb_chars=160),
+            "profile_image_url": RANDOM_PROFILE_URL,
+            "cover_photo_url": RANDOM_IMAGE_URL,
+            "location": self.fake.city(),
+            "friends_count": random.randint(0, 5000),
+            "created_at": str(self.fake.date_time_between(start_date='-10y', end_date='now')),
+            "work": self.fake.job(),
+            "education": self.fake.company(),
+        }
+
+    def generate_post(self, user_id):
+        return {
+            "post_id": self.fake.uuid4(),
+            "user_id": user_id,
+            "content": self.fake.text(max_nb_chars=500),
+            "image_url": RANDOM_IMAGE_URL,
+            "likes": random.randint(0, 5000),
+            "comments": random.randint(0, 500),
+            "shares": random.randint(0, 100),
+            "created_at": str(self.fake.date_time_between(start_date='-2y', end_date='now')),
+        }
+
+    def generate_comment(self, post_id, user_id):
+        return {
+            "comment_id": self.fake.uuid4(),
+            "post_id": post_id,
+            "user_id": user_id,
+            "comment": self.fake.sentence(nb_words=15),
+            "created_at": str(self.fake.date_time_between(start_date='-2y', end_date='now')),
+        }
+
+    def generate_like(self, post_id, user_id):
+        return {
+            "like_id": self.fake.uuid4(),
+            "post_id": post_id,
+            "user_id": user_id,
+            "created_at": str(self.fake.date_time_between(start_date='-2y', end_date='now')),
+        }
+
+    def generate_share(self, post_id, user_id):
+        return {
+            "share_id": self.fake.uuid4(),
+            "post_id": post_id,
+            "user_id": user_id,
+            "created_at": str(self.fake.date_time_between(start_date='-2y', end_date='now')),
+        }
+
+    def generate_post_and_interactions(self, user_id, post_count=10):
+        posts = []
+        comments = []
+        likes = []
+        shares = []
+
+        for _ in range(post_count):
+            post = self.generate_post(user_id)
+            posts.append(post)
+
+            num_comments = random.randint(0, 10)
+            num_likes = random.randint(0, 100)
+            num_shares = random.randint(0, 50)
+
+            comments.extend([self.generate_comment(post['post_id'], user_id) for _ in range(num_comments)])
+            likes.extend([self.generate_like(post['post_id'], user_id) for _ in range(num_likes)])
+            shares.extend([self.generate_share(post['post_id'], user_id) for _ in range(num_shares)])
+
+        return posts, comments, likes, shares
+
+    def generate_fake_facebook_data(self, user_count=4, posts_per_user=2):
+        users = []
+        all_posts = []
+        all_comments = []
+        all_likes = []
+        all_shares = []
+
+        for _ in range(user_count):
+            user = self.generate_user()
+            users.append(user)
+
+            user_posts, user_comments, user_likes, user_shares = self.generate_post_and_interactions(
+                user['user_id'], post_count=posts_per_user)
+
+            all_posts.extend(user_posts)
+            all_comments.extend(user_comments)
+            all_likes.extend(user_likes)
+            all_shares.extend(user_shares)
+
+        return users, all_posts, all_comments, all_likes, all_shares
