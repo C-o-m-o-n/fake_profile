@@ -1,78 +1,77 @@
 from faker import Faker
 import random, json
 from .constants import RANDOM_PROFILE_URL, RANDOM_IMAGE_URL
-            
+
+fake = Faker()
 
 class Xprofile:
-    def __init__(self):
-        self.fake = Faker()
 
     def generate_fake_user(self):
         return {
-            "user_id": self.fake.uuid4(),
-            "username": self.fake.user_name(),
-            "name": self.fake.name(),
-            "bio": self.fake.text(max_nb_chars=160),
-            "location": self.fake.city(),
-            "url": self.fake.url(),
+            "user_id": fake.uuid4(),
+            "username": fake.user_name(),
+            "name": fake.name(),
+            "bio": fake.text(max_nb_chars=160),
+            "location": fake.city(),
+            "url": fake.url(),
             "profile_image_url": RANDOM_PROFILE_URL,
             "banner_image_url": RANDOM_IMAGE_URL,
-            "join_date": str(self.fake.date_time_this_decade()),
-            "verified_status": self.fake.boolean(chance_of_getting_true=10),
+            "join_date": str(fake.date_time_this_decade()),
+            "verified_status": fake.boolean(chance_of_getting_true=10),
             "follower_count": random.randint(0, 1000000),
             "following_count": random.randint(0, 1000),
             "tweet_count": random.randint(0, 10000),
             "likes_count": random.randint(0, 50000),
             "list_memberships": random.randint(0, 100),
-            "timezone": self.fake.timezone(),
-            "language": self.fake.language_code(),
-            "protected_status": self.fake.boolean(chance_of_getting_true=5),
-            "suspended_status": self.fake.boolean(chance_of_getting_true=1),
-            "default_profile": self.fake.boolean(chance_of_getting_true=30),
-            "default_profile_image": self.fake.boolean(chance_of_getting_true=20)
+            "timezone": fake.timezone(),
+            "language": fake.language_code(),
+            "protected_status": fake.boolean(chance_of_getting_true=5),
+            "suspended_status": fake.boolean(chance_of_getting_true=1),
+            "default_profile": fake.boolean(chance_of_getting_true=30),
+            "default_profile_image": fake.boolean(chance_of_getting_true=20)
         }
 
     def generate_fake_tweet(self, user_id):
-        created_at = str(self.fake.date_time_between(start_date='-2y', end_date='now'))
+        created_at = str(fake.date_time_between(start_date='-2y', end_date='now'))
         return {
-            "tweet_id": self.fake.uuid4(),
+            "tweet_id": fake.uuid4(),
             "user_id": user_id,
-            "text": self.fake.sentence(nb_words=20),
+            "text": fake.sentence(nb_words=20),
             "created_at": created_at,
             "retweet_count": random.randint(0, 10000),
             "like_count": random.randint(0, 50000),
             "reply_count": random.randint(0, 2000),
             "quote_count": random.randint(0, 1000),
-            "is_retweet": self.fake.boolean(chance_of_getting_true=20),
-            "is_reply": self.fake.boolean(chance_of_getting_true=15),
-            "is_quoted": self.fake.boolean(chance_of_getting_true=10),
-            "language": self.fake.language_code(),
+            "is_retweet": fake.boolean(chance_of_getting_true=20),
+            "is_reply": fake.boolean(chance_of_getting_true=15),
+            "is_quoted": fake.boolean(chance_of_getting_true=10),
+            "language": fake.language_code(),
             "tweet_image_url": RANDOM_IMAGE_URL,
         }
 
     def generate_fake_comment(self, tweet_id, user_id):
         return {
-            "comment_id": self.fake.uuid4(),
+            "comment_id": fake.uuid4(),
             "tweet_id": tweet_id,
             "user_id": user_id,
-            "text": self.fake.sentence(nb_words=15),
-            "created_at": str(self.fake.date_time_between(start_date='-2y', end_date='now')),
+            "text": fake.sentence(nb_words=15),
+            "created_at": str(fake.date_time_between(start_date='-2y', end_date='now')),
         }
 
     def generate_fake_like(self, tweet_id, user_id):
         return {
-            "like_id": self.fake.uuid4(),
+            "like_id": fake.uuid4(),
             "tweet_id": tweet_id,
             "user_id": user_id,
-            "created_at": str(self.fake.date_time_between(start_date='-2y', end_date='now')),
+            "created_at": str(fake.date_time_between(start_date='-2y', end_date='now')),
         }
 
     def generate_fake_retweet(self, tweet_id, user_id):
         return {
-            "retweet_id": self.fake.uuid4(),
+            "retweet_id": fake.uuid4(),
             "tweet_id": tweet_id,
             "user_id": user_id,
-            "created_at": str(self.fake.date_time_between(start_date='-2y', end_date='now')),
+            "created_at": str(fake.date_time_between(start_date='-2y', end_date='now')),
         }
 
     def generate_fake_tweets_and_interactions(self, user_id, tweet_count=10):
@@ -123,47 +122,47 @@ class InstaProfile:
 
     def generate_user(self):
         return {
-            "user_id": self.fake.uuid4(),
-            "username": self.fake.user_name(),
-            "full_name": self.fake.name(),
-            "bio": self.fake.text(max_nb_chars=160),
+            "user_id": fake.uuid4(),
+            "username": fake.user_name(),
+            "full_name": fake.name(),
+            "bio": fake.text(max_nb_chars=160),
             "profile_image_url": RANDOM_PROFILE_URL,
-            "website": self.fake.url(),
+            "website": fake.url(),
             "followers": random.randint(0, 1000000),
             "following": random.randint(0, 1000),
         }
 
     def generate_comment(self, post_id, user_id):
         return {
-            "comment_id": self.fake.uuid4(),
+            "comment_id": fake.uuid4(),
             "user": user_id,
             "post": post_id,
-            "comment": self.fake.text(max_nb_chars=200),
+            "comment": fake.text(max_nb_chars=200),
             "likes": random.randint(0, 50000),
-            "created_at": str(self.fake.date_time_between(start_date='-2y', end_date='now')),
+            "created_at": str(fake.date_time_between(start_date='-2y', end_date='now')),
         }
 
     def generate_like(self, post_id, user_id):
         return {
-            "like_id": self.fake.uuid4(),
+            "like_id": fake.uuid4(),
             "post_id": post_id,
             "user_id": user_id,
-            "created_at": str(self.fake.date_time_between(start_date='-2y', end_date='now')),
+            "created_at": str(fake.date_time_between(start_date='-2y', end_date='now')),
         }
 
     def generate_repost(self, post_id, user_id):
         return {
-            "retweet_id": self.fake.uuid4(),
+            "retweet_id": fake.uuid4(),
             "post_id": post_id,
             "user_id": user_id,
-            "created_at": str(self.fake.date_time_between(start_date='-2y', end_date='now')),
+            "created_at": str(fake.date_time_between(start_date='-2y', end_date='now')),
         }
 
     def generate_post(self, user_id):
         return {
-            "post_id": self.fake.uuid4(),
+            "post_id": fake.uuid4(),
             "image_url": RANDOM_IMAGE_URL,
-            "caption": self.fake.text(),
+            "caption": fake.text(),
             "likes": random.randint(0, 50000),
         }
 
@@ -215,54 +214,54 @@ class LinkedInProfile:
 
     def generate_user(self):
         return {
-            "user_id": self.fake.uuid4(),
-            "first_name": self.fake.first_name(),
-            "last_name": self.fake.last_name(),
-            "headline": self.fake.job(),
-            "location": f"{self.fake.city()}, {self.fake.country()}",
-            "summary": self.fake.text(max_nb_chars=300),
+            "user_id": fake.uuid4(),
+            "first_name": fake.first_name(),
+            "last_name": fake.last_name(),
+            "headline": fake.job(),
+            "location": f"{fake.city()}, {fake.country()}",
+            "summary": fake.text(max_nb_chars=300),
             "profile_image_url": RANDOM_PROFILE_URL,
-            "industry": self.fake.bs(),
-            "education": self.fake.catch_phrase(),
-            "experience": self.fake.text(max_nb_chars=300),
-            "skills": [self.fake.word() for _ in range(5)],
+            "industry": fake.bs(),
+            "education": fake.catch_phrase(),
+            "experience": fake.text(max_nb_chars=300),
+            "skills": [fake.word() for _ in range(5)],
             "connections": random.randint(50, 5000),
         }
 
     def generate_post(self, user_id):
         return {
-            "post_id": self.fake.uuid4(),
+            "post_id": fake.uuid4(),
             "user_id": user_id,
-            "content": self.fake.text(),
+            "content": fake.text(),
             "likes": random.randint(0, 50000),
             "comments": random.randint(0, 1000),
             "shares": random.randint(0, 1000),
-            "created_at": str(self.fake.date_time_between(start_date='-2y', end_date='now')),
+            "created_at": str(fake.date_time_between(start_date='-2y', end_date='now')),
         }
 
     def generate_comment(self, post_id, user_id):
         return {
-            "comment_id": self.fake.uuid4(),
+            "comment_id": fake.uuid4(),
             "post_id": post_id,
             "user_id": user_id,
-            "text": self.fake.text(max_nb_chars=200),
-            "created_at": str(self.fake.date_time_between(start_date='-2y', end_date='now')),
+            "text": fake.text(max_nb_chars=200),
+            "created_at": str(fake.date_time_between(start_date='-2y', end_date='now')),
         }
 
     def generate_like(self, post_id, user_id):
         return {
-            "like_id": self.fake.uuid4(),
+            "like_id": fake.uuid4(),
             "post_id": post_id,
             "user_id": user_id,
-            "created_at": str(self.fake.date_time_between(start_date='-2y', end_date='now')),
+            "created_at": str(fake.date_time_between(start_date='-2y', end_date='now')),
         }
 
     def generate_share(self, post_id, user_id):
         return {
-            "share_id": self.fake.uuid4(),
+            "share_id": fake.uuid4(),
             "post_id": post_id,
             "user_id": user_id,
-            "created_at": str(self.fake.date_time_between(start_date='-2y', end_date='now')),
+            "created_at": str(fake.date_time_between(start_date='-2y', end_date='now')),
         }
 
     def generate_post_and_interactions(self, user_id, post_count=10):
@@ -305,7 +304,7 @@ class LinkedInProfile:
             all_shares.extend(user_shares)
 
         return users, all_posts, all_comments, all_likes, all_shares
-    
+
 
 class FacebookProfile:
     def __init__(self):
@@ -313,54 +312,54 @@ class FacebookProfile:
 
     def generate_user(self):
         return {
-            "user_id": self.fake.uuid4(),
-            "username": self.fake.user_name(),
-            "full_name": self.fake.name(),
-            "bio": self.fake.text(max_nb_chars=160),
+            "user_id": fake.uuid4(),
+            "username": fake.user_name(),
+            "full_name": fake.name(),
+            "bio": fake.text(max_nb_chars=160),
             "profile_image_url": RANDOM_PROFILE_URL,
             "cover_photo_url": RANDOM_IMAGE_URL,
-            "location": self.fake.city(),
+            "location": fake.city(),
             "friends_count": random.randint(0, 5000),
-            "created_at": str(self.fake.date_time_between(start_date='-10y', end_date='now')),
-            "work": self.fake.job(),
-            "education": self.fake.company(),
+            "created_at": str(fake.date_time_between(start_date='-10y', end_date='now')),
+            "work": fake.job(),
+            "education": fake.company(),
         }
 
     def generate_post(self, user_id):
         return {
-            "post_id": self.fake.uuid4(),
+            "post_id": fake.uuid4(),
             "user_id": user_id,
-            "content": self.fake.text(max_nb_chars=500),
+            "content": fake.text(max_nb_chars=500),
             "image_url": RANDOM_IMAGE_URL,
             "likes": random.randint(0, 5000),
             "comments": random.randint(0, 500),
             "shares": random.randint(0, 100),
-            "created_at": str(self.fake.date_time_between(start_date='-2y', end_date='now')),
+            "created_at": str(fake.date_time_between(start_date='-2y', end_date='now')),
         }
 
     def generate_comment(self, post_id, user_id):
         return {
-            "comment_id": self.fake.uuid4(),
+            "comment_id": fake.uuid4(),
             "post_id": post_id,
             "user_id": user_id,
-            "comment": self.fake.sentence(nb_words=15),
-            "created_at": str(self.fake.date_time_between(start_date='-2y', end_date='now')),
+            "comment": fake.sentence(nb_words=15),
+            "created_at": str(fake.date_time_between(start_date='-2y', end_date='now')),
         }
 
     def generate_like(self, post_id, user_id):
         return {
-            "like_id": self.fake.uuid4(),
+            "like_id": fake.uuid4(),
             "post_id": post_id,
             "user_id": user_id,
-            "created_at": str(self.fake.date_time_between(start_date='-2y', end_date='now')),
+            "created_at": str(fake.date_time_between(start_date='-2y', end_date='now')),
         }
 
     def generate_share(self, post_id, user_id):
         return {
-            "share_id": self.fake.uuid4(),
+            "share_id": fake.uuid4(),
             "post_id": post_id,
             "user_id": user_id,
-            "created_at": str(self.fake.date_time_between(start_date='-2y', end_date='now')),
+            "created_at": str(fake.date_time_between(start_date='-2y', end_date='now')),
         }
 
     def generate_post_and_interactions(self, user_id, post_count=10):
